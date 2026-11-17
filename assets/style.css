@@ -1,0 +1,157 @@
+:root {
+  --ink: #12352a;
+  --bg: #f4f1e6;
+  --card: #fbfaf4;
+  --accent: #ffde4d;      /* cor do selo do logo */
+  --cta: #1faa5c;         /* verde do botão */
+  --cta-dark: #168a4a;
+  --check: #1faa5c;
+  --muted: #3d5a50;
+  --radius: 22px;
+  --shadow: 7px 7px 0 var(--ink);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background: var(--bg);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 36px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+}
+.logo svg { width: 46px; height: 46px; }
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.headline {
+  margin-top: 26px;
+  font-size: clamp(1.55rem, 6.4vw, 1.85rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.perks {
+  list-style: none;
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.perks li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.perks svg { width: 18px; height: 18px; flex: none; }
+
+.cta {
+  margin-top: 40px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  background: var(--cta);
+  color: #fff;
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ink);
+  outline: 6px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 3px;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out, background-color 120ms ease-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.cta svg { width: 24px; height: 24px; flex: none; }
+
+@media (hover: hover) {
+  .cta:hover { background: var(--cta-dark); }
+}
+.cta:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.cta:focus-visible { outline-color: var(--ink); }
+
+.note {
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Animação sutil do radar */
+.sweep {
+  transform-origin: 24px 24px;
+  animation: sweep 3.2s linear infinite;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
+
+/* Leve pulso no botão para chamar atenção */
+.cta { animation: nudge 2.8s ease-in-out 1.2s infinite; }
+@keyframes nudge {
+  0%, 86%, 100% { transform: translateY(0); }
+  90% { transform: translateY(-3px); }
+  94% { transform: translateY(0); }
+}
+.cta:active { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep, .cta { animation: none; }
+}
+
+.wrap { width: 100%; max-width: 400px; }
